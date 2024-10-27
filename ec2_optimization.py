@@ -71,6 +71,30 @@ class EC2Optimizer:
         logging.info(f"Instance {instance_id} has CPU Utilization Percentage: {low_utilization_percentage:.2f}%")
 
 
+    def snapshot_optimizer(self, region):
+        ec2 = boto3.client('ec2', region_name=region)
+        snapshots = ec2.describe_snapshots(OwnerIds=['self'])
+
+        for snapshot in snapshots['Snapshots']:
+            snapshot_id = snapshot['SnapshotId']
+            volume_id = snapshot.get('VolumeId')
+            if not volume_id:
+                ec2.delete_snapshot(SnapshotId=snapshot_id)
+                logging.info(f"EBS snapshot {snapshot_id} is deleted as it is not attached to any volume.")
+            else:
+                try:
+                    all_volumes = ec2.describe_volumes(VolumeIds=[volume_id])
+                    for volume in all_volumes['Volumes']:
+                        if not volume['Attachments']:
+                           ec2.delete_snapshot(SnapshotId=snapshot_id)
+                           logging.info(f"EBS snapshot {snapshot_id} is deleted as it is not attached to any running instance's volume.")
+
+                except Exception as e:
+                    if e.response['Error']['Code'] == "InvalidVolume.NotFound":
+                        ec2.delete_snapshot(SnapshotId=snapshot_id)
+                        logging.info(f"EBS snapshot {snapshot_id} is deleted as the associated volume was not found.")
+                
+
     def optimize_ec2_instances(self):
         """Optimize EC2 instances based on their CPU utilization."""
         regions = self.get_regions()
@@ -93,30 +117,10 @@ class EC2Optimizer:
                     else:
                         logging.info(f"Instance ID: {instance_id} is not in staging or dev.")
 
+            self.snapshot_optimizer(region)
 
 
-    def snapshot_optimizer(self, region='ap-south-1'):
-        ec2 = boto3.client('ec2', region_name=region)
-        snapshots = ec2.describe_snapshots(OwnerIds=['self'])
-
-        for snapshot in snapshots['Snapshots']:
-            snapshot_id = snapshot['SnapshotId']
-            volume_id = snapshot.get('VolumeId')
-            if not volume_id:
-                ec2.delete_snapshot(SnapshotId=snapshot_id)
-            else:
-                try:
-                    all_volumes = ec2.describe_volumes(VolumeIds=[volume_id])
-                    for volume in all_volumes['Volumes']:
-                        if not volume['Attachments']:
-                           ec2.delete_snapshot(SnapshotId=snapshot_id) 
-
-                except Exception as e:
-                    if e.response['Error']['Code'] == "InvalidVolume.NotFound":
-                        ec2.delete_snapshot(SnapshotId=snapshot_id)
-                 
 if __name__ == "__main__":
     optimizer = EC2Optimizer()
-    # optimizer.optimize_ec2_instances()
-    optimizer.snapshot_optimizer()
+    optimizer.optimize_ec2_instances()
 
