@@ -67,7 +67,7 @@ class EC2Optimizer:
 
         low_utilization_percentage = (low_utilization_count / total_count ) * 100 if total_count > 0 else 0
 
-        if low_utilization_percentage > self.threshold:
+        if low_utilization_percentage < self.threshold:
             self.stop_instances(instance_id, region)
 
 
