@@ -102,11 +102,19 @@ class EC2Optimizer:
         for snapshot in snapshots['Snapshots']:
             snapshot_id = snapshot['SnapshotId']
             volume_id = snapshot.get('VolumeId')
-
             if not volume_id:
                 ec2.delete_snapshot(SnapshotId=snapshot_id)
-    
- 
+            else:
+                try:
+                    all_volumes = ec2.describe_volumes(VolumeIds=[volume_id])
+                    for volume in all_volumes['Volumes']:
+                        if not volume['Attachments']:
+                           ec2.delete_snapshot(SnapshotId=snapshot_id) 
+
+                except Exception as e:
+                    if e.response['Error']['Code'] == "InvalidVolume.NotFound":
+                        ec2.delete_snapshot(SnapshotId=snapshot_id)
+                 
 if __name__ == "__main__":
     optimizer = EC2Optimizer()
     # optimizer.optimize_ec2_instances()
