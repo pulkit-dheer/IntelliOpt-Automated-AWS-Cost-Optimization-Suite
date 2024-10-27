@@ -15,12 +15,10 @@ class EC2Optimizer:
         self.threshold = 10.0 
 
 
-
     def get_regions(self):
         """Fetch all available regions."""
         regions = self.ec2.describe_regions()
         return [region['RegionName'] for region in regions['Regions']]
-
 
 
     def get_compute_usage(self, instance_id, region):
@@ -52,7 +50,6 @@ class EC2Optimizer:
             logging.info(f"Stopped instance: {instance_id} in region: {region}")
         except Exception as e:
             logging.error(f"Error stopping instance {instance_id}: {e}")
-
 
 
     def analyze_cpu_utilization(self, datapoints, instance_id, region):
@@ -96,8 +93,22 @@ class EC2Optimizer:
                     else:
                         logging.info(f"Instance ID: {instance_id} is not in staging or dev.")
 
+
+
+    def snapshot_optimizer(self, region='ap-south-1'):
+        ec2 = boto3.client('ec2', region_name=region)
+        snapshots = ec2.describe_snapshots(OwnerIds=['self'])
+
+        for snapshot in snapshots['Snapshots']:
+            snapshot_id = snapshot['SnapshotId']
+            volume_id = snapshot.get('VolumeId')
+
+            if not volume_id:
+                ec2.delete_snapshot(SnapshotId=snapshot_id)
+    
+ 
 if __name__ == "__main__":
     optimizer = EC2Optimizer()
-    optimizer.optimize_ec2_instances()
-
+    # optimizer.optimize_ec2_instances()
+    optimizer.snapshot_optimizer()
 
