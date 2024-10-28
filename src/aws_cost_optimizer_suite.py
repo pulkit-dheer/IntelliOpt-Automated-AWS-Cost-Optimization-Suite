@@ -1,10 +1,26 @@
-import os
-import json
-import boto3
+"""
+aws_cost_optimizer_suite.py
+
+This module provides functionality for optimizing AWS costs by analyzing
+EC2 instance CPU utilization, managing EBS snapshots, and cleaning up 
+orphaned security groups.
+
+The main functionalities include:
+- Fetching regions in AWS.
+- Scan all EC2 instances with tag "staging" or "dev".
+- Analyzing CPU utilization to stop underutilized instances.
+- Managing EBS snapshots based on attachment status.
+- Deleting orphaned security groups.
+
+"""
+
 import datetime
+import boto3
 
 
 class AWSCostOptimizerSuite:
+    """A suite for optimizing AWS costs by managing EC2 instances and security groups."""
+
     def __init__(self, threshold=10.0):
         self.ec2 = boto3.client('ec2')
         self.start_time = datetime.datetime.now() - datetime.timedelta(days=1)
@@ -21,8 +37,7 @@ class AWSCostOptimizerSuite:
     def get_compute_usage(self, instance_id, region):
         """Fetch CPU utilization data for a given instance."""
         cloudwatch_client = boto3.client('cloudwatch', region_name=region)
-        
-        try: 
+        try:
             cpu_data = cloudwatch_client.get_metric_statistics(
                 Namespace='AWS/EC2',
                 MetricName='CPUUtilization',
@@ -33,7 +48,7 @@ class AWSCostOptimizerSuite:
                 Statistics=['Average'],
             )
             return cpu_data['Datapoints']
-            
+
         except Exception as e:
             print(f"Error fetching CPU data for instance {instance_id}: {e}")
             return []
@@ -59,16 +74,23 @@ class AWSCostOptimizerSuite:
 
         low_utilization_count = sum(1 for data in datapoints if data['Average'] < self.threshold)
 
-        low_utilization_percentage = (low_utilization_count / total_count ) * 100 if total_count > 0 else 0
+        if total_count > 0:
+            low_utilization_percentage = (low_utilization_count / total_count) * 100
+        else:
+            low_utilization_percentage = 0
 
         if low_utilization_percentage < self.threshold:
             self.stop_instances(instance_id, region)
 
 
-        print(f"Instance {instance_id} has CPU Utilization Percentage: {low_utilization_percentage:.2f}%")
+        print(f"Instance {instance_id} has CPU Utilization Percentage: "
+      f"{low_utilization_percentage:.2f}%")
+
+
 
 
     def snapshot_optimizer(self, region):
+        """Optimize EBS snapshots in a given region."""
         ec2 = boto3.client('ec2', region_name=region)
         snapshots = ec2.describe_snapshots(OwnerIds=['self'])
 
@@ -83,21 +105,24 @@ class AWSCostOptimizerSuite:
                     all_volumes = ec2.describe_volumes(VolumeIds=[volume_id])
                     for volume in all_volumes['Volumes']:
                         if not volume['Attachments']:
-                           ec2.delete_snapshot(SnapshotId=snapshot_id)
-                           print(f"EBS snapshot {snapshot_id} is deleted as it is not attached to any running instance's volume.")
+                            ec2.delete_snapshot(SnapshotId=snapshot_id)
+                            print(f"EBS snapshot {snapshot_id} is deleted as it is not " 
+                                  f"attached to any running instance's volume.")
 
                 except Exception as e:
                     if e.response['Error']['Code'] == "InvalidVolume.NotFound":
                         ec2.delete_snapshot(SnapshotId=snapshot_id)
                         print(f"EBS snapshot {snapshot_id} is deleted as the associated volume was not found.")
-                
+
 
     def optimize_ec2_instances(self, region):
         """Optimize EC2 instances based on their CPU utilization."""
         ec2 = boto3.client('ec2', region_name=region)
         print(f"Checking instances in region: {region}")
 
-        all_ec2_data = ec2.describe_instances(Filters=[{'Name': 'instance-state-name', 'Values': ['running']}])
+        filters = [{'Name': 'instance-state-name', 'Values': ['running']}]
+        all_ec2_data = ec2.describe_instances(Filters=filters)
+
 
         for reservation in all_ec2_data['Reservations']:
             for instance in reservation['Instances']:
@@ -123,7 +148,9 @@ class AWSCostOptimizerSuite:
                 ec2.delete_security_group(GroupId=sg_id)
                 print(f"Orphaned Security Group: {sg_id} in {region} is Deleted.")
             except Exception as e:
-                print(f"Failed to delete Security Group: {sg_id} in {region}. Error {str(e)}")
+                print(f"Failed to delete Security Group: {sg_id} in {region}. "
+                    f"Error {str(e)}")
+
 
 
     def get_security_groups(self, region):
@@ -155,6 +182,11 @@ class AWSCostOptimizerSuite:
 
 
 def lambda_handler(event, context):
+    """Lambda function handler for AWS Cost Optimization."""
+
+    # For debugging purposes
+    print("Event:", event)
+    print("Context:", context)
     optimizer = AWSCostOptimizerSuite()
 
     regions = optimizer.get_regions()
