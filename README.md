@@ -70,32 +70,32 @@ The [IntelliOpt](https://github.com/pulkit-dheer/IntelliOpt-Automated-AWS-Cost-O
 
 ### 1. Automated Identification and Management of Underutilized EC2 Instances
 
-    The suite employs AWS CloudWatch to continuously monitor the CPU utilization of EC2 instances over the past 24 hours. By analyzing these metrics, IntelliOpt identifies instances with consistently low CPU usage. When an instance’s average utilization falls below the specified threshold (default of 10%), the suite automatically stops the instance. This proactive management helps organizations:
+The suite employs AWS CloudWatch to continuously monitor the CPU utilization of EC2 instances over the past 24 hours. By analyzing these metrics, IntelliOpt identifies instances with consistently low CPU usage. When an instance’s average utilization falls below the specified threshold (default of 10%), the suite automatically stops the instance. This proactive management helps organizations:
 
-    - Reduce Costs: By stopping underutilized instances, organizations can achieve significant savings on compute expenses, potentially cutting costs by up to 90% for instances not fully utilized.
+- Reduce Costs: By stopping underutilized instances, organizations can achieve significant savings on compute expenses, potentially cutting costs by up to 90% for instances not fully utilized.
 
-    - Resource Reallocation: The saved resources can be reallocated to more critical workloads, improving overall performance.
+- Resource Reallocation: The saved resources can be reallocated to more critical workloads, improving overall performance.
 
 ### 2. Efficient Cleanup of Stalled EBS Snapshots
 
-    Over time, organizations often accumulate numerous **EBS snapshots**, many of which may no longer be relevant. The suite automates the process of identifying and deleting orphaned snapshots that are not attached to any active volumes. Key benefits include:
+Over time, organizations often accumulate numerous **EBS snapshots**, many of which may no longer be relevant. The suite automates the process of identifying and deleting orphaned snapshots that are not attached to any active volumes. Key benefits include:
 
-    - Cost Savings: Deleting unnecessary snapshots helps in reclaiming storage space and reducing storage costs associated with EBS.
+- Cost Savings: Deleting unnecessary snapshots helps in reclaiming storage space and reducing storage costs associated with EBS.
 
-    - Simplified Management: This automated cleanup ensures that your storage environment remains tidy and manageable, allowing for easier data governance and compliance.
+- Simplified Management: This automated cleanup ensures that your storage environment remains tidy and manageable, allowing for easier data governance and compliance.
 
 ### 3. Elimination of Orphaned Security Groups
 
-    As instances are launched and terminated, associated security groups may become orphaned, leading to a cluttered AWS environment. The IntelliOpt suite **automatically identifies** and deletes these unused security groups. This functionality provides:
+As instances are launched and terminated, associated security groups may become orphaned, leading to a cluttered AWS environment. The IntelliOpt suite **automatically identifies** and deletes these unused security groups. This functionality provides:
 
-    -  Streamlined Security Management: Keeping security groups clean and relevant reduces potential security risks and simplifies network management.
+- Streamlined Security Management: Keeping security groups clean and relevant reduces potential security risks and simplifies network management.
 
-    - Compliance with Best Practices: Regularly removing orphaned security groups aligns with AWS best practices, ensuring that your cloud environment adheres to organizational governance standards.
+- Compliance with Best Practices: Regularly removing orphaned security groups aligns with AWS best practices, ensuring that your cloud environment adheres to organizational governance standards.
 
 
 ### 4. Focus on Core Business Initiatives
 
-    By automating the optimization of AWS resources, IntelliOpt frees up valuable time for IT teams. Instead of focusing on manual resource management and monitoring, teams can concentrate on core business initiatives, driving innovation and growth.
+By automating the optimization of AWS resources, IntelliOpt frees up valuable time for IT teams. Instead of focusing on manual resource management and monitoring, teams can concentrate on core business initiatives, driving innovation and growth.
 
 
 ## ❓ FAQ
