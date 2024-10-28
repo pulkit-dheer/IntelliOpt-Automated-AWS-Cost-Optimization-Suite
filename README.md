@@ -41,13 +41,13 @@ pip install boto3
 
 3. IAM Permissions: The AWS Identity and Access Management (IAM) role or user executing this suite should have the following permissions:
 
-- ec2:DescribeRegions
-- ec2:DescribeInstances
-- ec2:StopInstances
-- ec2:DescribeSnapshots
-- ec2:DeleteSnapshot
-- ec2:DescribeVolumes
-- ec2:DeleteSecurityGroup
+`ec2:DescribeRegions` 
+`ec2:DescribeInstances`
+`ec2:StopInstances`
+`ec2:DescribeSnapshots`
+`ec2:DeleteSnapshot`
+`ec2:DescribeVolumes`
+`ec2:DeleteSecurityGroup`
 
 - cloudwatch:GetMetricStatistics
 
