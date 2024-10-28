@@ -68,6 +68,11 @@ pip install boto3
 
 The [IntelliOpt](https://github.com/pulkit-dheer/IntelliOpt-Automated-AWS-Cost-Optimization-Suite.git) suite provides a comprehensive and automated approach to optimizing AWS resource utilization, significantly lowering costs and enhancing operational efficiency. Here’s how the suite effectively addresses the identified challenges:
 
+
+
+![IntelliOpt: Automated-AWS-Cost-Optimization-Suite-diagram](https://github.com/pulkit-dheer/IntelliOpt-Automated-AWS-Cost-Optimization-Suite/blob/main/_assets/Aws_cost_optimization_suite_diagram.png)
+
+
 ### 1. Automated Identification and Management of Underutilized EC2 Instances
 
 The suite employs AWS CloudWatch to continuously monitor the CPU utilization of EC2 instances over the past 24 hours. By analyzing these metrics, IntelliOpt identifies instances with consistently low CPU usage. When an instance’s average utilization falls below the specified threshold (default of 10%), the suite automatically stops the instance. Importantly, the suite is designed to only delete EC2 instances that are tagged with **"staging" or "dev"** ensuring that production resources remain intact. This proactive management helps organizations:
