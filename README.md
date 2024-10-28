@@ -1,16 +1,20 @@
 # IntelliOpt: Automated-AWS-Cost-Optimization-Suite
 
-**Problem Statement:**  In today's cloud computing environment, organizations often face challenges in efficiently managing their AWS resources, particularly Amazon **EC2 instances**, **EBS snapshots, and Security groups.** With the increasing costs associated with unused or underutilized resources, it becomes imperative for businesses to optimize their infrastructure to ensure cost-effectiveness and operational efficiency.
+### Overview:
+In the ever-evolving cloud landscape, businesses often face rising AWS expenses due to **underutilized EC2 instances, idle EBS snapshots, and unused security groups.** Managing these resources efficiently is crucial for cost control and operational excellence.
 
+[IntelliOpt](https://github.com/pulkit-dheer/IntelliOpt-Automated-AWS-Cost-Optimization-Suite.git) is a powerful, automated suite developed to streamline AWS resource utilization, reduce superfluous costs, and simplify cloud management with minimal manual intervention.
 
-The purpose of [IntelliOpt](https://github.com/pulkit-dheer/IntelliOpt-Automated-AWS-Cost-Optimization-Suite.git) repository is to demonstrate how a suite of tools and scripts designed to enhance resource utilization, reduce unnecessary costs, and simplify cloud resource management.
+### Key Advantages of IntelliOpt:
 
+- **Proactive Cost Savings:**  
+   Through automation, IntelliOpt identifies and decommissions underused or orphaned resources, enabling organizations to **lower AWS costs** and avoid unnecessary spending.
 
-- **Automating the optimization** process enables organizations to significantly reduce AWS costs by proactively identifying and decommissioning **underutilized** and **orphaned resources.**
+- **Enhanced Operational Efficiency:**  
+   By handling optimization autonomously, IntelliOpt frees up valuable time for IT teams, allowing them to **focus on core business priorities** instead of routine monitoring and management.
 
-- The suite enhances **operational efficiency**, allowing teams to focus on **core business initiatives** instead of manual resource management and continuous monitoring.
-
-- Regular **cleanup of orphaned resources** ensures compliance with **organizational governance standards** and aligns with **cloud best practices.**
+- **Compliance and Best Practices:**  
+   The suite ensures regular **cleanup of unused resources,** aligning with AWS best practices and promoting adherence to **organizational governance standards** for a clean and compliant cloud environment.
 
 
 ## 📦 Requirements
@@ -81,7 +85,7 @@ The suite employs AWS CloudWatch to continuously monitor the CPU utilization of 
 
 - **Resource Reallocation:** The saved resources can be reallocated to more critical workloads, improving overall performance.
 
-### 2. Efficient Cleanup of Stalled EBS Snapshots
+### 2. Automated EBS Snapshot Cleanup for Cost-Effective Storage Management
 
 Over time, organizations often accumulate numerous **EBS snapshots**, many of which may no longer be relevant. The suite automates the process of identifying and deleting orphaned snapshots that are not attached to any active volumes. Key benefits include:
 
@@ -89,7 +93,7 @@ Over time, organizations often accumulate numerous **EBS snapshots**, many of wh
 
 - **Simplified Management:** This automated cleanup ensures that your storage environment remains tidy and manageable, allowing for easier data governance and compliance.
 
-### 3. Elimination of Orphaned Security Groups
+### 3. Automatic Cleanup of Unused Security Groups for a Safer, Simpler Network
 
 As instances are launched and terminated, associated security groups may become orphaned, leading to a cluttered AWS environment. The IntelliOpt suite **automatically identifies** and deletes these unused security groups. This functionality provides:
 
@@ -98,7 +102,15 @@ As instances are launched and terminated, associated security groups may become 
 - **Compliance with Best Practices:** Regularly removing orphaned security groups aligns with AWS best practices, ensuring that your cloud environment adheres to organizational governance standards.
 
 
-### 4. Focus on Core Business Initiatives
+### 4. Daily Automated Execution via AWS EventBridge for Continuous Optimization
+IntelliOpt is configured to run daily, leveraging AWS EventBridge to trigger and schedule the suite’s operations, ensuring that AWS resources are continuously monitored and optimized. This regular execution enables IntelliOpt to swiftly detect underutilized EC2 instances, orphaned EBS snapshots, and unnecessary security groups, automating actions as needed. Key advantages include:
+
+- **Continuous Cost Savings:** With AWS EventBridge orchestrating daily executions, IntelliOpt maximizes cost savings by promptly addressing inefficiencies, minimizing unnecessary expenses on an ongoing basis.
+
+- **Timely Resource Management:** Daily monitoring and cleanup powered by EventBridge ensure that your AWS resources remain dynamically aligned with business requirements, eliminating waste and improving cost efficiency.
+
+
+### 5. Enhanced Focus on Business Innovation through Automated Cost Optimization
 
 By automating the optimization of AWS resources, IntelliOpt frees up valuable time for IT teams. Instead of focusing on manual resource management and monitoring, teams can concentrate on core business initiatives, driving innovation and growth.
 
