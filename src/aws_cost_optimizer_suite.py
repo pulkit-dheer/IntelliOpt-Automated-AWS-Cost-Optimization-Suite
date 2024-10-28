@@ -4,7 +4,7 @@ import boto3
 import datetime
 
 
-class EC2Optimizer:
+class AWSCostOptimizerSuite:
     def __init__(self, threshold=10.0):
         self.ec2 = boto3.client('ec2')
         self.start_time = datetime.datetime.now() - datetime.timedelta(days=1)
@@ -155,7 +155,7 @@ class EC2Optimizer:
 
 
 def lambda_handler(event, context):
-    optimizer = EC2Optimizer()
+    optimizer = AWSCostOptimizerSuite()
 
     regions = optimizer.get_regions()
     for region in regions:
