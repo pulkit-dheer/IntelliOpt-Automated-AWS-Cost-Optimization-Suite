@@ -18,9 +18,10 @@ The purpose of [IntelliOpt](https://github.com/pulkit-dheer/IntelliOpt-Automated
 Let's jump into the Python packages you need. Within the Python environment of your choice, run:
 
 
-``` git clone https://github.com/pulkit-dheer/IntelliOpt-Automated-AWS-Cost-Optimization-Suite.git
+
+`git clone https://github.com/pulkit-dheer/IntelliOpt-Automated-AWS-Cost-Optimization-Suite.git
 cd IntelliOpt-Automated-AWS-Cost-Optimization-Suite/
-pip install -r requirements.txt ```
+pip install -r requirements.txt`
 
 
 
@@ -40,3 +41,13 @@ Underutilization of EC2 Instances: Many EC2 instances may be running with low CP
 EBS Snapshot Management: Organizations often accumulate numerous EBS snapshots over time, many of which become orphaned and are no longer attached to any volumes. These orphaned snapshots not only consume storage space but also contribute to unnecessary costs.
 
 Orphaned Security Groups: As instances are terminated, their associated security groups may remain unused. Identifying and cleaning up these orphaned security groups can help maintain a tidy and manageable cloud environment.
+
+
+
+
+
+
+## ❓ FAQ
+1. How does the suite determine if an EC2 instance is underutilized?
+    The suite utilizes **AWS CloudWatch** to gather CPU utilization metrics for each running **EC2 instance** over the **past 24 hours.** It computes the average CPU utilization percentage; if this average is below a specified threshold (default set at 10%), the instance is classified as **underutilized.** By proactively stopping these instances, the suite can significantly **reduce operational costs**, potentially saving up to **90% on compute expenses** for instances that are not being fully utilized. This strategic approach to cost optimization not only enhances resource efficiency but also ensures that cloud spending aligns more closely with actual usage, maximizing ROI for the user.
+
