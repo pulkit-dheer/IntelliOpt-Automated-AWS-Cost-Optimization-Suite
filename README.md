@@ -13,9 +13,11 @@ The purpose of [IntelliOpt](https://github.com/pulkit-dheer/IntelliOpt-Automated
 - Regular **cleanup of orphaned resources** ensures compliance with **organizational governance standards** and aligns with **cloud best practices.**
 
 
-## 🐍 Python Requirements
+## 📦 Requirements
 
 Let's jump into the Python packages you need. Within the Python environment of your choice, run:
+
+Python Environment: The suite is implemented in Python. Make sure you have Python 3.x installed on your machine.
 
 
 ```bash
@@ -24,21 +26,48 @@ cd IntelliOpt-Automated-AWS-Cost-Optimization-Suite/
 pip install -r requirements.txt
 ```
 
+Boto3 Library: Install the Boto3 library, which is the AWS SDK for Python, to interact with AWS services. You can install it using pip:
+
+```bash
+pip install boto3
+```
 
 
+### Additional Requirements
+
+1. AWS Account: You must have an active AWS account with sufficient permissions to access and manage EC2 instances, EBS snapshots, and security groups.
+
+2. AWS CLI Installed: Ensure that the AWS Command Line Interface (CLI) is installed and configured on your machine to facilitate interactions with AWS services.
+
+3. IAM Permissions: The AWS Identity and Access Management (IAM) role or user executing this suite should have the following permissions:
+
+- ec2:DescribeRegions
+- ec2:DescribeInstances
+- ec2:StopInstances
+- ec2:DescribeSnapshots
+- ec2:DeleteSnapshot
+- ec2:DescribeVolumes
+- ec2:DeleteSecurityGroup
+
+- cloudwatch:GetMetricStatistics
+
+- logs:CreateLogGroup
+- logs:CreateLogStream
+- logs:PutLogEvents
 
 
+4. Configuration: Optionally, you may customize the CPU utilization threshold in the AWSCostOptimizerSuite class based on your cost optimization strategy. 
 
 
 
 
 
 ## 🎯 Challenges
-_Underutilized EC2 Instances:_ Many EC2 instances may be running with low CPU utilization, leading to unnecessary costs. Identifying and stopping these instances can significantly reduce monthly expenses.
+**Underutilized EC2 Instances:** Many EC2 instances may be running with low CPU utilization, leading to unnecessary costs. Identifying and stopping these instances can significantly reduce monthly expenses.
 
-_Stalled EBS Snapshot:_ Organizations often accumulate numerous EBS snapshots over time, many of which become orphaned and are no longer attached to any volumes. These orphaned snapshots not only consume storage space but also contribute to unnecessary costs.
+**Stalled EBS Snapshot:** Organizations often accumulate numerous EBS snapshots over time, many of which become orphaned and are no longer attached to any volumes. These orphaned snapshots not only consume storage space but also contribute to unnecessary costs.
 
-_Orphaned Security Groups:_ As instances are terminated, their associated security groups may remain unused. Identifying and cleaning up these orphaned security groups can help maintain a tidy and manageable cloud environment.
+**Orphaned Security Groups:** As instances are terminated, their associated security groups may remain unused. Identifying and cleaning up these orphaned security groups can help maintain a tidy and manageable cloud environment.
 
 
 
