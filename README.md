@@ -70,7 +70,7 @@ The [IntelliOpt](https://github.com/pulkit-dheer/IntelliOpt-Automated-AWS-Cost-O
 
 ### 1. Automated Identification and Management of Underutilized EC2 Instances
 
-The suite employs AWS CloudWatch to continuously monitor the CPU utilization of EC2 instances over the past 24 hours. By analyzing these metrics, IntelliOpt identifies instances with consistently low CPU usage. When an instance’s average utilization falls below the specified threshold (default of 10%), the suite automatically stops the instance. This proactive management helps organizations:
+The suite employs AWS CloudWatch to continuously monitor the CPU utilization of EC2 instances over the past 24 hours. By analyzing these metrics, IntelliOpt identifies instances with consistently low CPU usage. When an instance’s average utilization falls below the specified threshold (default of 10%), the suite automatically stops the instance. Importantly, the suite is designed to only delete EC2 instances that are tagged with **"staging" or "dev"** ensuring that production resources remain intact. This proactive management helps organizations:
 
 - Reduce Costs: By stopping underutilized instances, organizations can achieve significant savings on compute expenses, potentially cutting costs by up to 90% for instances not fully utilized.
 
@@ -96,6 +96,16 @@ As instances are launched and terminated, associated security groups may become 
 ### 4. Focus on Core Business Initiatives
 
 By automating the optimization of AWS resources, IntelliOpt frees up valuable time for IT teams. Instead of focusing on manual resource management and monitoring, teams can concentrate on core business initiatives, driving innovation and growth.
+
+
+
+## 🏁 Conclusion
+With IntelliOpt, organizations can take a proactive approach to cloud cost management, achieving substantial cost savings while enhancing operational efficiency. By automating the identification and remediation of underutilized resources, the suite not only optimizes cloud spending but also aligns resource allocation with business needs, ensuring that every dollar spent on AWS contributes to maximizing ROI.
+
+
+
+
+
 
 
 ## ❓ FAQ
