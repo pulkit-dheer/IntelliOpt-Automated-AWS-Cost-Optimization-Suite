@@ -1,4 +1,4 @@
-# IntelliOpt: Automated-AWS-Cost-Optimization-Suite
+# IntelliOpt: Automated AWS Cost Optimization Suite
 
 ### Overview:
 In the ever-evolving cloud landscape, businesses often face rising AWS expenses due to **underutilized EC2 instances, idle EBS snapshots, and unused security groups.** Managing these resources efficiently is crucial for cost control and operational excellence. As organizations scale, tracking and optimizing cloud resources can become complex, leading to hidden costs and reduced efficiency. Proactive, automated solutions are essential to **maintain agility** while ensuring cloud spending aligns with business objectives.
