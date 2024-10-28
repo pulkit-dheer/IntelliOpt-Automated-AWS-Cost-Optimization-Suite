@@ -8,13 +8,13 @@ In the ever-evolving cloud landscape, businesses often face rising AWS expenses 
 ### Key Advantages of IntelliOpt:
 
 - **Proactive Cost Savings:**  
-   Through automation, IntelliOpt identifies and decommissions underused or orphaned resources, enabling organizations to **lower AWS costs** and avoid unnecessary spending.
+   Through automation, IntelliOpt identifies and decommissions underused or orphaned resources, enabling organizations to lower AWS costs and avoid unnecessary spending.
 
 - **Enhanced Operational Efficiency:**  
-   By handling optimization autonomously, IntelliOpt frees up valuable time for IT teams, allowing them to **focus on core business priorities** instead of routine monitoring and management.
+   By handling optimization autonomously, IntelliOpt frees up valuable time for IT teams, allowing them to focus on core business priorities instead of routine monitoring and management.
 
 - **Compliance and Best Practices:**  
-   The suite ensures regular **cleanup of unused resources,** aligning with AWS best practices and promoting adherence to **organizational governance standards** for a clean and compliant cloud environment.
+   The suite ensures regular cleanup of unused resources, aligning with AWS best practices and promoting adherence to **organizational governance standards for a clean and compliant cloud environment.
 
 
 ## 📦 Requirements
