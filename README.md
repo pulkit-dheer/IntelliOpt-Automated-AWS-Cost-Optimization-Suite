@@ -53,8 +53,6 @@ For more information see [Boto3 Documentation](https://boto3.amazonaws.com/v1/do
 
 3. IAM Permissions: The AWS Identity and Access Management (IAM) role or user executing this suite should have the following permissions:
 
-![lambda_permission](https://github.com/pulkit-dheer/IntelliOpt-Automated-AWS-Cost-Optimization-Suite/blob/main/assets/lambda_permission.png)
-
 
     `ec2:DescribeRegions` 
     `ec2:DescribeInstances`
@@ -63,6 +61,8 @@ For more information see [Boto3 Documentation](https://boto3.amazonaws.com/v1/do
     `ec2:DeleteSnapshot`
     `ec2:DescribeVolumes`
     `ec2:DeleteSecurityGroup`
+
+![lambda_permission](https://github.com/pulkit-dheer/IntelliOpt-Automated-AWS-Cost-Optimization-Suite/blob/main/assets/lambda_permission.png)
 
 
 4. Configuration (Optionally): You may customize the CPU utilization threshold in the AWSCostOptimizerSuite class based on your cost optimization strategy. 
