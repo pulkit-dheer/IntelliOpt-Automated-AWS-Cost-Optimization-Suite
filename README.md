@@ -61,6 +61,11 @@ For more information see [Boto3 Documentation](https://boto3.amazonaws.com/v1/do
     `ec2:DeleteSnapshot`
     `ec2:DescribeVolumes`
     `ec2:DeleteSecurityGroup`
+    `ec2:DeleteSecurityGroup`,
+    `logs:CreateLogGroup`,
+    `logs:CreateLogStream`,
+    `logs:PutLogEvents`
+
 
 ![lambda_permission](https://github.com/pulkit-dheer/IntelliOpt-Automated-AWS-Cost-Optimization-Suite/blob/main/assets/lambda_permission.png)
 
