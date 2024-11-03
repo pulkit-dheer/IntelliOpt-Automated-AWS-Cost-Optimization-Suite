@@ -53,6 +53,9 @@ For more information see [Boto3 Documentation](https://boto3.amazonaws.com/v1/do
 
 3. IAM Permissions: The AWS Identity and Access Management (IAM) role or user executing this suite should have the following permissions:
 
+![lambda_permission](https://github.com/pulkit-dheer/IntelliOpt-Automated-AWS-Cost-Optimization-Suite/blob/main/assets/lambda_permission.png)
+
+
     `ec2:DescribeRegions` 
     `ec2:DescribeInstances`
     `ec2:StopInstances`
@@ -112,6 +115,8 @@ IntelliOpt is configured to run daily, leveraging AWS EventBridge to trigger and
 - **Continuous Cost Savings:** With AWS EventBridge orchestrating daily executions, IntelliOpt maximizes cost savings by promptly addressing inefficiencies, minimizing unnecessary expenses on an ongoing basis.
 
 - **Timely Resource Management:** Daily monitoring and cleanup powered by EventBridge ensure that your AWS resources remain dynamically aligned with business requirements, eliminating waste and improving cost efficiency.
+
+![aws_lambda_code](https://github.com/pulkit-dheer/IntelliOpt-Automated-AWS-Cost-Optimization-Suite/blob/main/assets/aws_lambda_code.png)
 
 
 ### 5. Enhanced Focus on Business Innovation through Automated Cost Optimization
