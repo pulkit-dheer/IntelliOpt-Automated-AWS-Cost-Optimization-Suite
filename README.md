@@ -1,5 +1,13 @@
 # IntelliOpt: Automated AWS Cost Optimization Suite
 
+
+
+![IntelliOpt: Automated-AWS-Cost-Optimization-Suite-diagram](https://github.com/pulkit-dheer/IntelliOpt-Automated-AWS-Cost-Optimization-Suite/blob/main/assets/IntelliOpt%3A%20Automated%20AWS%20Cost%20Optimization%20Suite.gif)
+
+
+
+
+
 ### Overview:
 In the ever-evolving cloud landscape, businesses often face rising AWS expenses due to **underutilized EC2 instances, idle EBS snapshots, and unused security groups.** Managing these resources efficiently is crucial for cost control and operational excellence. As organizations scale, tracking and optimizing cloud resources can become complex, leading to hidden costs and reduced efficiency. Proactive, automated solutions are essential to **maintain agility** while ensuring cloud spending aligns with business objectives.
 
@@ -71,10 +79,6 @@ For more information see [Boto3 Documentation](https://boto3.amazonaws.com/v1/do
 ## 💡 The Solution
 
 The [IntelliOpt](https://github.com/pulkit-dheer/IntelliOpt-Automated-AWS-Cost-Optimization-Suite.git) suite provides a comprehensive and automated approach to optimizing AWS resource utilization, significantly lowering costs and enhancing operational efficiency. Here’s how the suite effectively addresses the identified challenges:
-
-
-
-![IntelliOpt: Automated-AWS-Cost-Optimization-Suite-diagram](https://github.com/pulkit-dheer/IntelliOpt-Automated-AWS-Cost-Optimization-Suite/blob/main/_assets/Aws_cost_optimization_suite_diagram.png)
 
 
 ### 1. Automated Scanning and Management of Underutilized EC2 Instances
